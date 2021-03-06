@@ -1,3 +1,5 @@
+// import '../styles/style.css';
+
 const firstScreen = document.getElementById('first_screen');
 const mainScreen = document.getElementById('main_screen');
 

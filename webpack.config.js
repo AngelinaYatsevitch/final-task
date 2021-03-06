@@ -7,11 +7,7 @@ module.exports = {
   context: root(),
   entry: {
     'index': './src/app/index.js',
-    // 'home': './src/app/home.js',
-    // 'clients': './src/app/clients.js',
-    // 'map': './src/app/map.js',
-    // 'login': './src/app/login.js',
-  },
+    },
   output: {
     path: root('dist'),
     filename: '[name].js',
@@ -72,36 +68,6 @@ module.exports = {
     new HtmlWebpackPlugin(
       {
         chunks: [
-          'index',
-          'index',
-        ],
-        template: 'src/index.html',
-        filename: 'index.html'
-      },
-    ),
-    new HtmlWebpackPlugin(
-      {
-        chunks: [
-          'index',
-        ],
-        template: 'src/index.html',
-        filename: 'index.html'
-      },
-    ),
-    new HtmlWebpackPlugin(
-      {
-        chunks: [
-          'index',
-          'login',
-        ],
-        template: 'src/index.html',
-        filename: 'index.html'
-      },
-    ),
-    new HtmlWebpackPlugin(
-      {
-        chunks: [
-          'index',
           'index',
         ],
         template: 'src/index.html',

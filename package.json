@@ -31,9 +31,8 @@
     "build:prod": "webpack --config webpack.config.prod.js",
     "start": "node server.js"
   },
-  "author": "Angelina",
+  "author": "Ilya Ivanov <com.ilya.ivanov@gmail.com>",
   "description": "Webpack Scaffolding",
   "main": "server.js",
-  "keywords": [],
   "license": "ISC"
 }
