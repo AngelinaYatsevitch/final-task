@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "arrow-parens": ["error", "as-needed", {
+      "requireForBlockBody": false
+    }],
+    "no-duplicate-imports": "error",
+    "prefer-const": ["error", {
+      "destructuring": "all",
+      "ignoreReadBeforeAssign": false
+    }]
+  }
+}

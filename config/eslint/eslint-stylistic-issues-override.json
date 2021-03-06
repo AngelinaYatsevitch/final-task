@@ -1,0 +1,41 @@
+{
+  "rules": {
+    "array-bracket-newline": ["error", { "multiline": true, "minItems": 3 }],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
+    "capitalized-comments": ["error", "always", { "ignoreConsecutiveComments": true }],
+    "func-names": ["warn", "as-needed"],
+    "function-paren-newline": ["error", "consistent"],
+    "id-blacklist": ["error", "err", "qty", "arr", "msg"],
+    "id-length": [
+      "error",
+      {
+        "min": 3,
+        "max": 50,
+        "exceptions": ["id"]
+      }
+    ],
+    "id-match": ["error", "^[a-zA-Z0-9_]*[a-zA-Z0-9]+$"],
+    "lines-around-comment": ["error", {
+      "beforeBlockComment": true,
+      "allowBlockStart": true,
+      "allowObjectStart": true,
+      "allowArrayStart": true,
+      "allowClassStart": true
+    }],
+    "max-depth": ["error", 2],
+    "max-lines": ["error", { "max": 200, "skipBlankLines": true, "skipComments": true }],
+    "max-lines-per-function": ["error", { "max": 20, "skipBlankLines": true, "skipComments": true }],
+    "max-params": ["error", 5],
+    "max-statements-per-line": ["error", { "max": 1 }],
+    "multiline-comment-style": ["error", "separate-lines"],
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 3 }],
+    "no-inline-comments": "error",
+    "no-negated-condition": "warn",
+    "no-underscore-dangle": "off",
+    "object-curly-newline": ["error", {
+      "ObjectExpression": { "minProperties": 3, "multiline": true, "consistent": true },
+      "ObjectPattern": { "minProperties": 3, "multiline": true, "consistent": true }
+    }],
+    "quote-props": ["error", "as-needed"]
+  }
+}
