@@ -42,6 +42,7 @@ function registrate() {
     enterPage.style.display = "flex";
 }
 
+const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 function checkInputs() {
     if (enterUsername.value !== "" && enterPassword.value !== "") {
@@ -112,14 +113,58 @@ function exit() {
         firstScreen.style.display = 'block';
         mainScreen.style.display = 'none';
 }
-function getUserDevice() {
-    let deviceInfo = document.createElement('p');
-    let info = navigator.userAgent;
 
-    deviceInfo.innerHTML = `Вы зашли через: ${info}`;
-    mainTab.append(deviceInfo);
+
+
+
+const system = document.querySelector('.system');
+const browser = document.querySelector('.use');
+
+const str = navigator.userAgent;
+const arr = str.split(' ');
+
+let firstElementArr;
+let lastElementArr;
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i].match(/\(/)) {
+    firstElementArr = i;
+    continue;
+  }
+
+  if (arr[i].match(/\)/)) {
+    lastElementArr = i + 1;
+    break;
+  }
 }
 
+const compSoft = arr.slice(firstElementArr, lastElementArr).join(' ');
+system.append(compSoft);
+
+
+for (let i = 0; i < arr.length; i++) {
+  const opera = /OPR/i;
+  const firefox = /Firefox/i;
+  const chrom = /Chrome/i;
+  const safari = /Safari/i;
+  const edg = /Edg/i;
+
+  const operaCheck = str.match(opera);
+  const safariCheck = str.match(chrom);
+
+  if (arr[i].match(opera)) {
+    browser.append(arr[i]);
+  } else if (arr[i].match(firefox)) {
+    browser.append(arr[i]);
+  } else if (arr[i].match(chrom) && !operaCheck) {
+    browser.append(arr[i]);
+  } else if (arr[i].match(safari) && !safariCheck) {
+    browser.append(arr[i]);
+  } else if (arr[i].match(edg)) {
+    browser.append(arr[i]);
+  }
+}
+
+//--------------------
 async function createClientsTable() {
     let response = await fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1b/raw/677516ee3bd278f7e3d805108596ca431d00b629/db.json');
 
