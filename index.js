@@ -335,230 +335,58 @@ regPassword.addEventListener('change', checkRegInputs);
 regPasswordCheck.addEventListener('change', checkRegInputs);
 
 
-getUserDevice();
 createClientsTable();
 
 
-// let map: google.maps.Map;
 
-// function initMap(): void {
-//   map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-//     center: { lat: -34.397, lng: 150.644 },
-//     zoom: 8,
-//   });
-// }
+function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 3,
+      center: {lat: 53.89979378678366, lng: 27.55869137841202},
+    });
 
-
-// function initMap(){
-//     let element = document.querySelector('#map');
-//     let options = {
-//         zoom: 5,
-//         center: {lat: 55.7558, lng: 37.6173},
-//     };
-
-//     let myMap = new google.maps.Map(element, options);
-//     let markers = [
-//     {
-//         coordinates: {lat: 55.7558, lng: 37.6173},
-//         info: 'Moskow',
-//     },
-//     {
-//         coordinates: {lat: 59.9343, lng: 30.3351},
-//         info: 'St-Peter',
-//     }
-//     ]
-
-//     for(let i=0; i<markers.length; i++){
-//     addMarker(markers[i]);
-//     }
-//     function addMarker(){}
-// }
-
-        
-    let map;
-    let styles = [
-    {
-  "featureType": "all",
-  "elementType": "all",
-  "stylers": [
-      
-      {
-          "weight": "0.01"
-      }
-  ]
-},
-        {
-            "featureType": "administrative.country",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "administrative.country",
-            "elementType": "labels",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "administrative.province",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "landscape",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#dde0e4"
-                }
-            ]
-        },
-        {
-            "featureType": "landscape",
-            "elementType": "labels",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "water",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#f6f6f6"
-                }
-            ]
-        },
-        {
-            "featureType": "water",
-            "elementType": "labels",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        }
+    //массив координат
+    const bounds = [
+        {lat: 55.7522200, lng: 37.6155600},
+        {lat: 53.89979378678366, lng: 27.55869137841202},
+        {lat: 50.4546600, lng: 30.5238000},
+        {lat: 54.6891600, lng: 25.2798000},//
+        {lat: 52.5243700, lng: 13.4105300},//
+        {lat: 41.8919300, lng: 12.5113300},//
+        {lat: 52.4345000, lng: 30.9754000},//
+        {lat: 53.9168000, lng: 30.3449000},
+        {lat: 55.1904000, lng: 30.2049000},
+        {lat: 40.4165000, lng: -3.7025600},
+        {lat: 42.6975100, lng: 23.3241500},
+        {lat: 37.9794500, lng: 23.7162200},
     ];
+
+
+    //сообщения по клику на маркер
+    const secretMessages = ["Москва", "Минск",
+    "Киев", "Вильнюс", "Берлин", 'Рим',
+    'Гомель', 'Могилев', 'Витебск', 'Мадрид',
+    'София', 'Афины'];
     
-    function initMap() {
-      map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 34.40082528239003, lng: 16.99734345732416},
-        zoom: 2,
-        disableDefaultUI: true,
-        
+
+    for (let i = 0; i < secretMessages.length; ++i) {
+      const marker = new google.maps.Marker({
+        position: bounds[i],
+        map: map,
       });
-      
-       marker = new google.maps.Marker({
-                position: {lat: 55.617629155073985, lng: -118.88156248797436},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-    
-      marker = new google.maps.Marker({
-                position: {lat: 65.11991396719912, lng: -158.871794233226},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-
-
-
-       marker = new google.maps.Marker({
-                position: {lat: 34.97896109547272, lng: -83.63742089452825},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-      
-
-      marker = new google.maps.Marker({
-                position: {lat: -12.231040712131923, lng: -39.73858151628167},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-      
-
-         marker = new google.maps.Marker({
-                position: {lat: 82.15418599286265, lng: -78.0462512164574},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-      
-  
-    
-        marker = new google.maps.Marker({
-                position: {lat: 65.55545042444581, lng: -45.02434406726646},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-      
-         marker = new google.maps.Marker({
-                position: {lat: 61.85742064964765, lng: 7.23573514271245},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-          
-      marker = new google.maps.Marker({
-                position: {lat: -20.568610243978103, lng: 23.445589414953513},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-
-       marker = new google.maps.Marker({
-                position: {lat: 25.932825757582137, lng: 81.09297910959023},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-       
-      marker = new google.maps.Marker({
-                position: {lat: 70.53049666952494, lng: 81.49064264011882},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-       
-       marker = new google.maps.Marker({
-                position: {lat: 60.60028333840539, lng: 97.25604655112262},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-      
-       marker = new google.maps.Marker({
-                position: {lat: 66.02718271201344, lng: 136.3465849919132},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-      
-       marker = new google.maps.Marker({
-                position: {lat: 65.8567479243026, lng: 172.09247775705967},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-    
-       marker = new google.maps.Marker({
-                position: {lat: -7.533226028350088, lng: 109.94009876909695},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-      
-      
-        marker = new google.maps.Marker({
-                position: {lat: -34.627487366126324, lng: 147.47752462440957},
-                map: map,
-         animation: google.maps.Animation.DROP
-            });
-      
-      
-    map.setOptions({styles: styles});
-    
-     
+      attachSecretMessage(marker, secretMessages[i]);
     }
+  }
+
+  // Attaches an info window to a marker with the provided message. When the
+  // marker is clicked, the info window will open with the secret message.
+   function attachSecretMessage(marker, secretMessage) {
+    const infowindow = new google.maps.InfoWindow({
+      content: secretMessage,
+    });
+    marker.addListener("click", () => {
+      infowindow.open(marker.get("map"), marker);
+    });
+  }
+  
+  window.initMap = initMap;
